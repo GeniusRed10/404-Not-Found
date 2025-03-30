@@ -10,3 +10,6 @@
   from = "/netlify/anything"
   to = "https://www.google.com/search?q=anything"
   status = 301
+
+[functions]
+  directory = "netlify/functions"
