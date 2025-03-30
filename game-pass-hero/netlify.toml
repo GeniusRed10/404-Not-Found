@@ -1,3 +1,13 @@
 [build]
-command = "npm run build"
-publish = ".next"
+  base = "game-pass-hero"
+  command = "npm install && npm run build"
+  publish = "game-pass-hero/.next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
