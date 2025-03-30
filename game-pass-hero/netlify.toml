@@ -1,5 +1,4 @@
 [build]
-  base = "game-pass-hero"
   command = "npm install --legacy-peer-deps && npm run build"
-  publish = "game-pass-hero/.next"
+  publish = ".next"
 
