@@ -159,15 +159,6 @@ export default function Home() {
   const [direction, setDirection] = useState(1) // 1 for right, -1 for left
   const totalSlides = slides.length
 
-  // Auto-advance slides every 5 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDirection(1)
-      setCurrentSlide((prev) => (prev + 1) % totalSlides)
-    }, 5000)
-
-    return () => clearTimeout(timer)
-  }, [currentSlide, totalSlides])
 
   // Manual navigation
   const goToNextSlide = () => {
