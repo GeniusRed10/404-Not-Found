@@ -33,7 +33,7 @@ export default function SlideContent({ title, content }: SlideContentProps) {
     },
   }
 
-  // Format content to handle line breaks and lists
+  // Format content to handle line breaks, lists, and clickable links
   const formatContent = (text: string) => {
     // Split by line breaks
     const paragraphs = text.split("\n").filter((p) => p.trim() !== "")
@@ -48,9 +48,27 @@ export default function SlideContent({ title, content }: SlideContentProps) {
         )
       }
 
+      // Check for URLs and convert them to clickable links
+      const urlRegex = /(https?:\/\/[^\s]+)/g
+      const parts = paragraph.split(urlRegex)
+
       return (
         <p key={index} className="mb-4 last:mb-0">
-          {paragraph}
+          {parts.map((part, i) =>
+            urlRegex.test(part) ? (
+              <a
+                key={i}
+                href={part}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 underline"
+              >
+                {part}
+              </a>
+            ) : (
+              part
+            )
+          )}
         </p>
       )
     })
@@ -73,4 +91,3 @@ export default function SlideContent({ title, content }: SlideContentProps) {
     </motion.div>
   )
 }
-
